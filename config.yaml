@@ -1,16 +1,15 @@
 meta:
-  engine: 4.0.4
-  name: samoklava
-  version: 0.3
-  author: soundmonster
-  url: https://github.com/soundmonster/samoklava
+  version: "v0.0.1"
+  author: "Anarion"
 units:
   kx: cx
   ky: cy
   px: 2
   py: 2
+  $default_width: cx
+  $default_height: cy
 points:
-  key:
+  key: 
     footprints:
       choc_hotswap:
         type: choc
@@ -28,68 +27,128 @@ points:
           to: =row_net
         anchor:
           shift: [0, -5]
+    padding: ky
   zones:
     matrix:
-      key.padding: ky
+      anchor:
+        shift: [180, -150]
       columns:
         pinky:
           key:
             stagger: 0 ky
-            spread: kx
-            column_net: col_pinky
+            spread: 18
+            splay: 17
+            origin: [0, -ky]
+            column_net: P20
+          rows:
+            top:
+              bind: [0.1, 0.5 kx, 0.1, 0.5]
+            home:
+              bind: [0.1, 0.5 kx, 0.1, 0.5]
+            bottom:
+              bind: [0.5, 0.5, 15, 0.5]
         ring:
           key:
-            stagger: 0.7 ky
-            spread: kx
-            column_net: col_ring
+            spread: 18
+            stagger: ky
+            splay: -7
+            origin: [0, -ky]
+            column_net: P19
+          rows:
+            top:
+              bind: [0.1, 0.5 kx, 0.1, 0.1]
+            home:
+              bind: [0.1, 0.5 kx, 0.1, 0.1]
+            bottom:
+              bind: [0.5, 0.5 kx, 35, 0.1]
         middle:
           key:
-            stagger: 0.2 ky
-            spread: kx
-            column_net: col_middle
+            spread: 18
+            stagger: ky/3
+            splay: -5
+            origin: [0, -ky]
+            column_net: P18
+            shift: [0.2, 0]
+          rows:
+            top:
+              bind: [0.1, 0.1, 0.5 kx, 0.1]
+            bottom:
+              bind: [0.5, 0.5 kx, 35, 0.1]
         index:
           key:
-            stagger: -0.2 ky
-            spread: kx
-            column_net: col_index
+            spread: 18
+            stagger: -ky/3
+            splay: -5
+            origin: [0, -ky]
+            column_net: P15
+          rows:
+            top:
+              bind: [0.1, 0.1, 0.5 kx, 0.5 kx]
         inner:
           key:
-            stagger: -0.1 ky
-            spread: kx
-            column_net: col_inner
+            spread: 19
+            stagger: -ky/6
+            origin: [0, -ky]
+            column_net: P14
       rows:
         bottom:
-          row_net: row_bottom
+          row_net: P6
+          tags:
+            high1: false
+          bind: 0.5
         home:
-          row_net: row_home
+          row_net: P5
+          tags:
+            high1: false
+          bind: 0.5
         top:
-          row_net: row_top
+          row_net: P4
+          tags:
+            high1: false
+          bind: 0.5
     thumbfan:
       anchor:
         ref: matrix_inner_bottom
-        shift: [-0.5 kx, -1 ky]
+        shift: [-1.3 kx, -1.3 ky]
       columns:
         near:
           key:
-            spread: kx
-            splay: -15
-            origin: [-0.5 kx, -0.5 ky]
-            column_net: col_middle
+            spread: 0
+            splay: -2
+            origin: [-3 kx, -40 ky]
+            column_net: P19
+          rows:
+            thumb:
+              tags:
+                high1: true
         home:
           key:
+            column_net: P18
             spread: kx
-            splay: -15
-            origin: [-0.5 kx, -0.5 ky]
-            column_net: col_index
+            splay: -14
+            rotate: 90
+            origin: [-0.5 kx, -1 ky]
+          rows:
+            thumb:
+              tags:
+                high1: true
         far:
           key:
             spread: kx
             splay: -15
-            origin: [-0.5 kx, -0.5 ky]
-            column_net: col_inner
+            rotate: 90
+            origin: [-0.5 kx, -0.8 ky]
+            column_net: P15
+          rows:
+            thumb:
+              bind: [3, -2, 4, 0.1]
+              tags:
+                high15: true
+
       rows:
         thumb:
-          row_net: row_thumb
+          row_net: P7
+          bind: [0.1, 0.1, 0.1, 0.1]
 outlines:
   # board dimensions according to JLCPCB: 122.28 mm x 101.05 mm
   raw:
