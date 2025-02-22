@@ -97,8 +97,8 @@ points:
         inner:
           key:
             spread: 0
-            splay: 5
-            origin: [1 kx, 2.8 ky]
+            splay: -2
+            origin: [-3 kx, -40 ky]
             column_net: P19
           rows:
             thumb:
@@ -108,7 +108,8 @@ points:
           key:
             column_net: P18
             spread: kx
-            splay: -8
+            splay: -14
+            rotate: 90
             origin: [-0.5 kx, -1 ky]
           rows:
             thumb:
@@ -117,7 +118,7 @@ points:
         home:
           key:
             spread: kx
-            splay: -10
+            splay: -15
             rotate: 90
             origin: [-0.5 kx, -0.8 ky]
             column_net: P15
@@ -126,18 +127,7 @@ points:
               bind: [3, -2, 4, 0.1]
               tags:
                 high15: true
-        far:
-          key:
-            spread: kx
-            splay: -7
-            rotate: 90
-            origin: [-0.5 kx, -0.7 ky]
-            column_net: P14
-          rows:
-            thumb:
-              bind: [4, -2, 0.1, 0.1]
-              tags:
-                high15: true
+
       rows:
         thumb:
           row_net: P7
